@@ -7,17 +7,47 @@
     <link rel="stylesheet" href="./main.css">
 </head>
 <body>
-    <div class="nav bg-green-800 p-2">
-        <p class="text-white text-md">Hey</p>
+    <div id="popup-container" class="hidden absolute translate-x-[-50%] translate-y-[-50%] top-1/2 left-1/2 bg-[#191414] p-6"></div>
+    <div class="nav bg-[#1DB954] px-6 py-4 flex justify-between items-center">
+        <div class="box-elem w-1/2 flex justify-start">
+            <p class="text-white text-md mr-2 font-semibold font-seg">Make your time count:</p> <p class="text-white text-md mr-2 font-semibold font-seg" id="actual-time"></p>
+        </div>
+        <div class="box-elem w-1/2 flex justify-end">
+            <p id="new-task" class="text-[#191414] text-md mr-2 cursor-pointer font-semibold font-seg flex items-center p-2 hover:bg-green-400 duration-300 ease-in-out rounded-md">
+                <svg class="h-8 w-8 text-[#191414] mr-2"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <line x1="12" y1="5" x2="12" y2="19" />  <line x1="5" y1="12" x2="19" y2="12" /></svg>
+                Add new task
+            </p>
+            <p id="new-project" class="text-[#191414] text-md mr-2 cursor-pointer font-semibold font-seg flex items-center p-2 hover:bg-green-400 duration-300 ease-in-out rounded-md">
+                <svg class="h-8 w-8 text-[#191414] mr-2"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <line x1="12" y1="5" x2="12" y2="19" />  <line x1="5" y1="12" x2="19" y2="12" /></svg>
+                Create new project
+            </p>
+        </div>
     </div>
     <div class="page flex h-full">
-        <div class="side-bar w-1/4 bg-gray-100 p-4">
-            <div id="inbox" class="btn py-2 px-2 text-lg hover:bg-gray-400 ease-in-out duration-150 cursor-pointer rounded-md">Inbox</div>
-            <div id="week" class="btn py-2 px-2 text-lg hover:bg-gray-400 ease-in-out duration-150 cursor-pointer rounded-md">This week</div>
-            <div id="projects" class="btn py-2 px-2 text-lg hover:bg-gray-400 ease-in-out duration-150 cursor-pointer rounded-md">Projects</div>
+        <div class="side-bar w-1/4 bg-[#191414] p-4 font-seg text-white">
+            <div id="important" class="btn py-2 px-2 text-lg hover:bg-gray-800 ease-in-out duration-300 cursor-pointer rounded-md flex items-center">
+                <svg class="w-6 h-6 text-white dark:text-white mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                    <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M8 8v1h4V8m4 7H4a1 1 0 0 1-1-1V5h14v9a1 1 0 0 1-1 1ZM2 1h16a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1Z"></path>
+                </svg>
+                Important
+            </div>
+            <div id="week" class="btn py-2 px-2 text-lg hover:bg-gray-800 ease-in-out duration-300 cursor-pointer rounded-md flex items-center">
+                <svg class="w-6 h-6 text-yellow-400 dark:text-white mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1v3m5-3v3m5-3v3M1 7h18M5 11h10M2 3h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"></path>
+                </svg>
+                This week
+            </div>
+            <div id="projects" class="btn py-2 px-2 text-lg hover:bg-gray-800 ease-in-out duration-300 cursor-pointer rounded-md flex items-center">
+                <svg class="w-6 h-6 text-red-500 dark:text-white mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M19.728 10.686c-2.38 2.256-6.153 3.381-9.875 3.381-3.722 0-7.4-1.126-9.571-3.371L0 10.437V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-7.6l-.272.286Z"></path>
+                    <path d="m.135 7.847 1.542 1.417c3.6 3.712 12.747 3.7 16.635.01L19.605 7.9A.98.98 0 0 1 20 7.652V6a2 2 0 0 0-2-2h-3V3a3 3 0 0 0-3-3H8a3 3 0 0 0-3 3v1H2a2 2 0 0 0-2 2v1.765c.047.024.092.051.135.082ZM10 10.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5ZM7 3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1H7V3Z"></path>
+                </svg>
+                Projects
+            </div>
+            <div id="projects-list"></div>
         </div>
         <div class="container w-3/4 p-5">
-            task area
+            <div id="content-in"></div>
         </div>
     </div>
 </body>
